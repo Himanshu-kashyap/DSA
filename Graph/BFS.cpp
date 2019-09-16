@@ -6,8 +6,11 @@ class BFS
 	int V;
 	vector<int> *nodes;
 	vector<int> ::iterator itr;
+	
 	public:
 	
+	
+	// constructor 
 	BFS(int V)
 	{
 		this->V = V; 
