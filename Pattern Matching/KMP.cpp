@@ -2,12 +2,12 @@
 using namespace std;
 
 
-int * arrBuilder(string s,int *arr)
+void arrBuilder(char *s,int *arr)
 {
     
     int i=1,j=0;
     arr[0] = 0;
-    while(i <= s.length() )
+    while(i <= strlen(s))
     {
         if(s[i] == s[j])
         {
@@ -29,12 +29,47 @@ int * arrBuilder(string s,int *arr)
     
 }
 
+void pattern(char *str,char *patt)
+{
+    
+    
+    int i=0,j=0;
+    int lstr = strlen(str);
+    int lpat = strlen(patt);
+    
+    int arr[lstr];
+    arrBuilder(str,arr);
+
+    while(i< lstr)
+    {
+        if(str[i] == patt[i])
+        {
+            i++;j++;
+        }
+
+        if(i == lpat)
+        {
+            cout<<"found pattern at : "<<i-j<<endl;
+            j = arr[j-1];
+        }
+        else if(i<lstr && patt[j] != str[i]) 
+        {
+            if(j!=0)
+             j = arr[j-1];
+            else
+             i += 1; 
+        
+        }
+    }
+}
+
 int main()
 {
-    string str;
+    char str[1000],pat[1000];
     cin>>str;
-    int arr[str.length()];
-    arrBuilder(str,arr);
-    for(int i=0;i<str.length();i++)
-        cout<< arr[i]<<endl;
+    cin>>pat;
+    int arr[strlen(str)];
+    pattern(str,pat);
+    // for(int i=0;i<str.length();i++)
+    //     cout<< arr[i]<<endl;
 }
