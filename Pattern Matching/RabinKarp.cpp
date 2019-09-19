@@ -29,7 +29,7 @@ cin>>s>>pat;
 int prime = 3;
 
 int hashp = hashPat(pat,prime);
-//cout<<"hash pattern : "<<hashp<<endl;
+cout<<"hash pattern : "<<hashp<<endl;
 
 int patlen = pat.length();
 int strlength = s.length();
@@ -37,22 +37,32 @@ int strlength = s.length();
 int i=0;
 string temp = s.substr(0,patlen);  // for initialization of string matching just as naive
 
-int hashstr = hashPat(temp,prime);
 
-while(i != strlength)
+int hashstr = hashPat(temp,prime);
+if(temp == pat)
+{
+	cout<<"pattern found at index : "<<i<<endl;
+	return 0;
+}
+
+
+while(i <= strlength)
 {
 	if(hashstr == hashp)
 	{
-		//cout<<s.substr(i,i+patlen-1)<<"substring of patt"<< endl;
+		
+		cout<<s.substr(i,i+patlen-1)<<" substring of patt"<< endl;
+		
 		if(s.substr(i,i+patlen-1) == pat)
 		{
 			cout<<"pattern found at index : "<<i<<endl;
 			return 0;
+			
 		}
 		
 	}
 	else{  // this else is used to calculate next hash instead of naive parsing we use this
-		// cout<<i<<s[i]<<":"<<s[i+patlen]<<" --> "<<hashstr<<" --> "<<hashp<<endl;
+		cout<<i<<s[i]<<":"<<s[i+patlen]<<" --> "<<hashstr<<" --> "<<hashp<<endl;
 		
 		hashstr -= (int(s[i]) - 96);
 		hashstr /= prime;
