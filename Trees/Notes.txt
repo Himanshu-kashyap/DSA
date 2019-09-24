@@ -1,0 +1,22 @@
+
+
+Depth first traversal O(n) : extra space requirements => O(h)  (h = max height of tree)
+	inorder
+	preorder 
+	postorder
+
+Breadth first traversal O(n)   : extra space requirements => O(w)  (w = max width of tree)
+	Level order
+
+Diameter of Tree :
+	Max distance b/w 2 leaf nodes
+
+	It is biggest of : 
+		Diameter of left subtree
+		Diameter of right subtree
+		left height of node + right height of node
+
+	Diameter fxn complexity = O(n)	
+	height compl :  as we are going to each node : O(n)
+
+
