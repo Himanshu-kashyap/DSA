@@ -14,6 +14,7 @@ Node *newNode(int data)
 	Node *node = new Node;
 	node->data = data;
 	node->left = node->right = NULL;
+	return node;
 }
 
 int height(Node *root,int &ans)
