@@ -20,3 +20,9 @@ Diameter of Tree :
 	height compl :  as we are going to each node : O(n)
 
 
+
+
+=====================  Heap
+Heap: 
+	level order traversal
+	O(nLogn) : sorting

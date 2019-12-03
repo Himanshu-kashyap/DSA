@@ -1,3 +1,7 @@
+// single source shortest path
+// detects negative weight cycle 
+// 
+
 #include<bits/stdc++.h>
  using namespace std;
  

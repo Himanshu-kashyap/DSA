@@ -1,40 +1,69 @@
 #include<bits/stdc++.h>
- using namespace std;
+using namespace std;
 
+class BFS{
+int V;
+vector<int> *adj;
+int count;
+public:
 
-
-struct compare{
-	bool operator()(const int& l, const int& r)
-	 {
-	 	return l<r;
-	 }
-};
-
-priority_queue<int,vector<int>,greater<int> > g;
-
-int main()
+BFS(int V)
 {
- int n;cin>>n;
- int arr[n];
-   for(int i=0;i<n;i++)
-    {
-	cin>>arr[i];
-	g.push(arr[i]);
-	}
-  int c = 0;
-  while(g.size() != 1 )
-    {
-    	int a = g.top();g.pop();
-    	int b = g.top();g.pop();
-    	g.push(a+b);
-    	c = c+a+b;
-	}
-	
-	
-	 cout<< c;
-  	
-  	return 0;
-    
-
+    this->V = V;
+    adj = new vector<int> [V];
+    count =0;
 }
 
+void addEdge(int u,int v) 
+{
+    adj[u].push_back(v);
+    adj[v].push_back(u);
+}
+
+void bfstraversal(int source)
+{
+    bool visited[V];
+    for(int i = 1; i<=V ;i++)visited[i] = false;
+    
+	queue<int> q;
+    q.push(source);
+    visited[source] = true;
+    
+    while(!q.empty())
+    {
+        source = q.front();
+        cout<<source<<endl;
+        count+=1;
+        q.pop();
+        
+        for(vector<int> ::iterator itr = adj[source].begin();itr != adj[source].end();itr++)
+        {
+            if(!visited[*itr])
+            {
+                visited[*itr] = true;
+                q.push(*itr);
+            }
+        }
+        cout <<count<<endl;
+        
+    }
+}
+    
+};
+ 
+ int main()
+ {
+ 	BFS graph(5);
+    graph.addEdge(1, 2);
+    graph.addEdge(2, 3);
+    graph.addEdge(3, 4);
+    graph.addEdge(2, 4);
+    
+    graph.bfstraversal(1);
+         
+     
+     
+     
+     return 0;
+     
+ }
